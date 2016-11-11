@@ -30,7 +30,7 @@ In order for us to bring out more in-depth analysis, we undertook background res
 
 Closely having studied the past researches, we found that most of researchers made opposite conclusions to ours in regard to the effects of post-apartheid on the qualiaty of life in South Africa. We therefore want to test our hypothesis in the basis of the following data analysis and compare with the past studies.
 
-We found the data of monthly earnings among races and gender. We tried to scrape the data from the website.
+We found the data of monthly earnings among race and gender. We tried to scrape the data from the website.
 
 ```{r}
 URL <- 'http://businesstech.co.za/news/wealth/131524/this-is-the-average-salary-in-south-africa-by-race-and-industry/'
@@ -62,7 +62,7 @@ summary(GenderEarningsTable)
 
 As shown above, every variable has a class of "characters" even though it represents numerical data.
 
-The data we want to have is the mean of earnings among races and gender in the year of 2003 and 2012. 
+The data we want to have is the mean of earnings among race and gender in the year of 2003 and 2012. 
 
 We make TimeVector and IndivisualVector to lable the data.
 
@@ -78,7 +78,7 @@ male2003 <- as.numeric(gsub("([0-9]+).*$", "\\1", str_replace_all(GenderEarnings
 is.numeric(male2003)
 male2003
 ```
-As you can see above, the character variables successfully converted to numerical variables.
+As you can see above, the character variable successfully converted to numerical variable.
 Then, we created functions, which conduct the above sequences.
 
 ```{r}
@@ -124,7 +124,7 @@ Earnings <- gather(preEarnings, time, mean, Earnings2003:Earnings2012)
 Earnings
 ```
 
-We successfully made the numerical vector which shows the earnings among races and genders.
+We successfully made the numerical vector which shows the earnings among race and gender.
 
 ## Data Gathering by using Data-API
 
@@ -164,6 +164,6 @@ As shown in the first graph, we cannot say that the inequality has decreased. Th
 
 In the second graph, we can see that the GINI index has slightly increased during 2008~2011. This indicates that the oveall inequality has increased during this period.
 
-We need to gather more data for 1990~2016 to either reject or accept our hypothesis in order to make clear comparisons between before and after Apartheid. 
+We need to gather more data for 1990~2016 to either reject or accept our hypothesis  by making clearer comparisons between before and after Apartheid. 
 
 # References
