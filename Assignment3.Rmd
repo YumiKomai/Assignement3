@@ -52,34 +52,34 @@ GenderEarningsTable
 ```
 
 ## Data Cleaning and Merging
-In this section, we will try to clean the data so that they can be statistical analysed.
+In this section, we will try to clean the data so that they can be statistically analysed.
 
-Firstly, we use command "summary" to investigate the structure (class of variables, number of vectors) of data frames we got in the previous section.
+Firstly, we used command "summary" to investigate the structure (class of variables, number of vectors) of data frames we obtained in the previous section.
 ```{r}
 summary(RaceEarningsTable)
 summary(GenderEarningsTable)
 ```
 
-As shown, every variables has a class of "characters" even though it represents numerical data.
+As shown above, every variable has a class of "characters" even though it represents numerical data.
 
-The data we want to have is the mean of earnings among races and gender in 2003, 2012. 
+The data we want to have is the mean of earnings among races and gender in the year of 2003 and 2012. 
 
-Firstly, we make TimeVector and IndivisualVector to labeling the data.
+We make TimeVector and IndivisualVector to lable the data.
 
 ```{r}
 TimeVector <- c(2003,2012) #numerical vector
 IndivisualVector <- c("Male","Female","White","Asian/Indian","Coloured","BlackAfrican") #character vector
 ```
 
-Then, we try to convert character vector to numerical vector.
+Then, we try to convert the character vector to the numerical vector.
 
 ```{r}
 male2003 <- as.numeric(gsub("([0-9]+).*$", "\\1", str_replace_all(GenderEarningsTable$X5[3], fixed(" "), "")))
 is.numeric(male2003)
 male2003
 ```
-As I shown above, the character variable successfully converted to numerical variable.
-Then, we make function which conduct this sequence.
+As you can see above, the character variables successfully converted to numerical variables.
+Then, we created functions, which conduct the above sequences.
 
 ```{r}
 Converter <- function(x){
@@ -91,7 +91,7 @@ is.numeric(test)
 test
 ```
 
-Then, we can apply this function to all data.
+Then, we apply this function to all data.
 
 ```{r}
 #definition of vector
@@ -116,7 +116,7 @@ preEarnings
 
 The preEarnings is messy data.
 
-So we are going to transform it into tidy data.
+So, we are going to transform it into tidy data.
 
 ```{r}
 library(tidyr)
@@ -124,27 +124,27 @@ Earnings <- gather(preEarnings, time, mean, Earnings2003:Earnings2012)
 Earnings
 ```
 
-We suceeded to make the numerical vector showing the earnings among races and genders.
+We successfully made the numerical vector which shows the earnings among races and genders.
 
 ## Data Gathering by using Data-API
 
-Then, we try to gather data from WorldBank by using Worldbank Data API.
+Then, we tried to gather data from World Bank by using World bank Data API.
 
-We found the GINI index of south africa.
+We found the GINI index of South Africa.
 ```{r}
 gini <-WDI(country = "ZA", indicator = "SI.POV.GINI")
 gini
 ```
 
-We suceeded to fetch the data by using WDI.
+We fetched the data successfully by using WDI.
 
 
 
-## Conduct basic descriptive statistics
-The data we gathered in previous section partialy statisticaly analysed (mean and median are already calcurated). In this section, we try to figure out the trend of inequality graphycally by using descriptive statistics.
+## Basic descriptive statistics
+The data we gathered in the previous section are statistically analysed (mean and median are already calculated). In this section, we try to figure out the trend of inequality with a graph by using descriptive statistics.
 
 
-We want to plot the data frame in earning mean vs time among each indivisual.
+We want to plot the data frame with mean of earnings and time among indivisuals.
 
 
 ```{r}
@@ -152,18 +152,18 @@ jikan <- c(2003,2003,2003,2003,2003,2003,2012,2012,2012,2012,2012,2012)
 plot(jikan,Earnings$mean)
 ```
 
-Then, We try to plot the GINI coeficient of South Africa.
+Then, We plotted the GINI coeficient of South Africa.
 
 ```{r}
 qplot(gini$year,gini$SI.POV.GINI)
 ```
 
-## Briefly discribing
+## Brief Description
 
-As shown in the first graph, we cannot say that the inequality is decreased. This results contradicts to our hyposition.
+As shown in the first graph, we cannot say that the inequality has decreased. This result contradicts to our hypothesis.
 
-In the second graph, we can see that the GINI index is slightly increased during 2008~2011. This means that the oveall inequality has been increased during this period.
+In the second graph, we can see that the GINI index has slightly increased during 2008~2011. This indicates that the oveall inequality has increased during this period.
 
-We need further data between 1990~2016 to reject our hypothesis. Because we need both data before and after the fall of Apartheid.
+We need to gather more data for 1990~2016 to either reject or accept our hypothesis in order to make clear comparisons between before and after Apartheid. 
 
 # References
