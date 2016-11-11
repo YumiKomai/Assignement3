@@ -143,7 +143,7 @@ We want to plot the data frame in earning mean vs time among each indivisual.
 
 ```{r}
 jikan <- c(2003,2003,2003,2003,2003,2003,2012,2012,2012,2012,2012,2012)
-qplot(jikan,Earnings$mean)
+plot(jikan,Earnings$mean)
 ```
 
 Then, We try to plot the GINI coeficient of South Africa.
