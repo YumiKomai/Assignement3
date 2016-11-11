@@ -22,12 +22,14 @@ Twenty years since the end of Apartheid: Did the collapse of Apartheid play a si
 Before conducting the data analysis to find the answer for our research question, we begin by clarifying the definitions for racial and social inequality. While social inequality broadly refers to the existence of unequal opportunities for different social status/positions within a society, racial inequality can be seen as one of dimensions of social inequality. It thus indicates the discrimination based on race in access to socioeconomic opportunities or services. In our research study, we will specifically look into racial discrimination in terms of employment, education, and income levels. Because these three indicators within the capitalism society can be seen as fundamental yet significant estimators for the quality of human well-being, we decided to include them. In addition, we will try to identify drivers of unequal income distribution by controlling possible factors and variables such as unemployment rate and education level.
 
 ## Literature review
-In order for us to bring out more in-depth analysis, we undertook background researches by examining the past studies written by various researchers. First of all, according to Leibbrandt,(see @Leibbrandt), Since the fall of Apartheid(1993~2008), overall (include all races) income inequality has increased and it was mainly caused by huge inequality within black African community in South-Africa. We chose this article as the first reference since it has been cited the most for the South-African Inequality Study. Second research literature is "One Kind of Freedom: Poverty Dynamics in Post-Apartheid South Africa,"@Carter20011987 which explores whether the legacy of apartheid in terms of inequality and human insecurity has been superseded by looking at the dynamics of post-apartheid income distribution based on the data from national household surveys. "Income and Non-income Inequality in Post-Apartheid South Africa: What are the Drivers and Possible Policy Interventions?"@Devepol identifies the drivers of the reproduction of inequality in post-apartheid South Africa and argues that there had a continuous increase in inequality, strongly indicating that South African is now the one of the most consistently unequal economy in the world. Fourth background research literature is "Poverty and Well-being in Post-Apartheid South Africa: An Overview of Data, Outcomes and Policy."@Hbhorat While this study provides an overview of poverty and well-being of South African during the first decade of post-apartheid, it argues that the first ten years after the end of Apartheid has rather displayed increase in income inequality and unemployment rates. "Crime and local inequality in South Africa"@Demombynes2005265 examines the effects of local inequality and violent crime in South Africa in the post-apartheid era and claims that racial heterogeneity is highly correlated with all types of crime. Lastly, "Poverty and Inequality Dynamics in South Africa: Post-apartheid Developments in the Light of the Long-Run Legacy" makes a claim that the bottom half of the income distribution and poverty has been dominated by these black South Africans. 
+In order for us to bring out more in-depth analysis, we undertook background researches by examining the past studies written by various researchers. First of all, according to Leibbrandt,(see @Leibbrandt), Since the fall of Apartheid(1993~2008), overall (include all races) income inequality has increased and it was mainly caused by huge inequality within black African community in South-Africa. We chose this article as the first reference since it has been cited the most for the South-African Inequality Study. Second research literature is "One Kind of Freedom: Poverty Dynamics in Post-Apartheid South Africa," which explores whether the legacy of apartheid in terms of inequality and human insecurity has been superseded by looking at the dynamics of post-apartheid income distribution based on the data from national household surveys. "Income and Non-income Inequality in Post-Apartheid South Africa: What are the Drivers and Possible Policy Interventions?" identifies the drivers of the reproduction of inequality in post-apartheid South Africa and argues that there had a continuous increase in inequality, strongly indicating that South African is now the one of the most consistently unequal economy in the world. Fourth background research literature is "Poverty and Well-being in Post-Apartheid South Africa: An Overview of Data, Outcomes and Policy." While this study provides an overview of poverty and well-being of South African during the first decade of post-apartheid, it argues that the first ten years after the end of Apartheid has rather displayed increase in income inequality and unemployment rates. "Crime and local inequality in South Africa" examines the effects of local inequality and violent crime in South Africa in the post-apartheid era and claims that racial heterogeneity is highly correlated with all types of crime. Lastly, "Poverty and Inequality Dynamics in South Africa: Post-apartheid Developments in the Light of the Long-Run Legacy" makes a claim that the bottom half of the income distribution and poverty has been dominated by these black South Africans. 
 
-## Data Gathering by web-scraping
-Closely having studied the past researches, we found that most of researchers made opposite conclusions to ours in regard to the effects of post-apartheid on the qualiaty of life in South Africa. We therefore want to test our hypothesis based on the following data analysis and compare with the past studies.
 
-We found the data of monthly earnings among races and gender. We tried to scraping the data from the website.
+## Data Gathering based on web-scraping
+
+Closely having studied the past researches, we found that most of researchers made opposite conclusions to ours in regard to the effects of post-apartheid on the qualiaty of life in South Africa. We therefore want to test our hypothesis in the basis of the following data analysis and compare with the past studies.
+
+We found the data of monthly earnings among races and gender. We tried to scrape the data from the website.
 
 ```{r}
 URL <- 'http://businesstech.co.za/news/wealth/131524/this-is-the-average-salary-in-south-africa-by-race-and-industry/'
@@ -136,10 +138,13 @@ gini
 We suceeded to fetch the data by using WDI.
 
 
+
 ## Conduct basic descriptive statistics
 The data we gathered in previous section partialy statisticaly analysed (mean and median are already calcurated). In this section, we try to figure out the trend of inequality graphycally by using descriptive statistics.
 
+
 We want to plot the data frame in earning mean vs time among each indivisual.
+
 
 ```{r}
 jikan <- c(2003,2003,2003,2003,2003,2003,2012,2012,2012,2012,2012,2012)
@@ -147,6 +152,10 @@ qplot(jikan,Earnings$mean)
 ```
 
 Then, We try to plot the GINI coeficient of South Africa.
+
+
+
+## Briefly discribing
 
 ```{r}
 qplot(gini$year,gini$SI.POV.GINI)
@@ -159,6 +168,5 @@ As shown in the first graph, we cannot say that the inequality is decreased. Thi
 In the second graph, we can see that the GINI index is slightly increased during 2008~2011. This means that the oveall inequality has been increased during this period.
 
 We need further data between 1990~2016 to reject our hypothesis. Because we need both data before and after the fall of Apartheid.
-
 
 # References
