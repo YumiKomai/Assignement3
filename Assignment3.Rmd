@@ -1,0 +1,122 @@
+---
+title: "Assignment3"
+output: pdf_document
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(WDI)
+library(ggplot2)
+library(bibtex)
+library(rvest)
+library(dplyr)
+library(xml2)
+```
+
+## Research Quetion
+Twenty Years since the end of Apartheid: Did the collapse of Apartheid play a significant role in reducing racial and social inequality in South Africa? Is post-apartheid South Africa better off or worse off than during the apartheid era?
+
+## Definition of Racial and social inequality
+Before answer the research question, we need to clarify what the racial and social inequality actually is. In this article, we defined it as a deferences among races in terms of unemployment rate, education disparity, and income distribution. The reason why we defined it by these three index is that in capitalism sociaty, income level is the most fundamental index, which estimates the quality of life of an indivisual. In adittion, we try to identify the driver of inequality of income level by investigate possible factors such as unemployment rate and education level.
+
+## Literature review
+Before starting investigation, we need to look around previous researches which has been writen by various ambitious researchers.
+
+According to Leibbrandt,(see @Leibbrandt)
+  1, Since the fall of Apartheid(1993~2008), overall (include all races) income inequality increased. The same is true among four major racial groups.
+  2, However, the major driver of inequality increase is intra-African inequality in South-Africa.
+
+The reason why we choose this article as the first reference article for this article is that this is the most cited work in the South-African Inequality Study.
+
+## Data Gathering
+
+According to Leibbrandt, inequality has been increased since the fall of Apartheid. We will test this assumption by using other data which is not used in the article.
+
+We found the data of monthly earnings among races and gender. We tried to scraping the data from the website.
+
+```{r}
+URL <- 'http://businesstech.co.za/news/wealth/131524/this-is-the-average-salary-in-south-africa-by-race-and-industry/'
+
+RaceEarningsTable <- URL %>% read_html() %>%
+                    html_nodes('#container > div.content_holder > div.content > div.post_single > div.post_content > div:nth-child(11) > table') %>%
+                    html_table() %>% 
+                    as.data.frame
+RaceEarningsTable
+
+URL <- 'http://businesstech.co.za/news/wealth/131524/this-is-the-average-salary-in-south-africa-by-race-and-industry/'
+
+GenderEarningsTable <- URL %>% read_html() %>%
+                    html_nodes('#container > div.content_holder > div.content > div.post_single > div.post_content > div:nth-child(13) > table') %>%
+                    html_table() %>% 
+                    as.data.frame
+GenderEarningsTable
+
+```
+
+## Data Cleaning and Merging
+In this section, we will try to clean the data so that they can be statistical analysed.
+
+Firstly, we use command "summary" to investigate the structure (class of variables, number of vectors) of data frames we got in the previous section.
+```{r}
+summary(RaceEarningsTable)
+summary(GenderEarningsTable)
+```
+
+As shown, every variables has a class of "characters" even though it represents numerical data.
+
+The data we want to have is the mean of earnings among races and gender in 2003, 2012. 
+
+Firstly, we make TimeVector and IndivisualVector to labeling the data.
+
+```{r}
+TimeVector <- c("2003","2012")
+IndivisualVector <- c("White","Asian/Indian","Coloured","BlackAfrican","Male","Female")
+```
+
+Then, we make DataVector for each year.
+
+```{r}
+
+unique(as.numeric(unlist(strsplit(gsub( unlist(RaceEarningsTable$X5[3])), ""))))
+
+data2003 <- c(as.numeric(RaceEarningsTable$X5[3]),as.numeric(RaceEarningsTable$X5[4]),as.numeric(RaceEarningsTable$X5[5]),as.numeric(RaceEarningsTable$X5[6]),as.numeric(GenderEarningsTable$X5[3]),as.numeric(GenderEarningsTable$X5[4]))
+data2003
+```
+
+```{r}
+#2003
+GenderEarningsTable$X5[3] #2003male
+GenderEarningsTable$X5[4] #2003female
+
+#2012
+GenderEarningsTable$X6[3] #2012male
+GenderEarningsTable$X6[4] #2012female
+
+#2003
+RaceEarningsTable$X5[3]
+RaceEarningsTable$X5[4]
+RaceEarningsTable$X5[5]
+RaceEarningsTable$X5[6]
+
+#2012
+RaceEarningsTable$X6[3]
+RaceEarningsTable$X6[4]
+RaceEarningsTable$X6[5]
+RaceEarningsTable$X6[6]
+
+```
+
+
+
+
+
+
+## Conduct basic descriptive statistics
+The data we gathered in previous section partialy statisticaly analysed (mean and median are already calcurated). In this section, we try to figure out the trend of inequality graphycally by using descriptive statistics.
+
+
+
+## Briefly discribing
+
+# References

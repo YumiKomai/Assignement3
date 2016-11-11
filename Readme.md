@@ -1,24 +1,18 @@
----
-title: "Readme"
-output: pdf_document
----
+#Description of Assignment3
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-# Assignement2
-#Abstruct
-We will make comparisons regarding social equality in South Africa between the period of Apartheid and now based on data with respect to crime rates among race, level of education, and level of income. The objective of this research is to observe the effectiveness of policy change over time after Apartheid and to possibly suggest public policy to elevate South Africans' quality of life.
+Purpose: Gather, clean, and (begin to) analyse data
 
-#Hypothesis
-After the abolishment of Apartheid, indicators has been significantly changed.
+Deadline: 11 November
 
-#Methodlogy
-1, Gathering data
+You will submit a GitHub repo that:
 
-2, Compare the trend of those indicators during the period of Apartheid and now.
+1: Gathers web-based data from at least two sources. Cleans and merges the data so that it is ready for statistical analyses.
 
-#Discussion
+2: Conducts basic descriptive statistics with the data to address a relevant research question. Could include inferential stats.
 
-#Conclusion
-Abolishing Apartheid was extremely effective to reduce social inequality!-I don't think so!!
+3: Briefly describes the results including with dynamically generated tables and figures.
+
+4: Has a write up of 1,500 words maximum that describes the data gathering and analysis, It also will use literate programming.
+
+#What we did in this repository
+We gathered and analysed the data.
