@@ -27,7 +27,7 @@ In order for us to bring out more in-depth analysis, we undertook background res
 
 ## Data Gathering
 
-According to Leibbrandt, inequality has been increased since the fall of Apartheid. We will test this assumption by using other data which is not used in the article.
+Closely having studied the past researches, we found that most of researchers made opposite conclusions to ours in regard to the effects of post-apartheid on the qualiaty of life in South Africa. We therefore want to test our hypothesis based on the following data analysis and compare with the past studies.
 
 We found the data of monthly earnings among races and gender. We tried to scraping the data from the website.
 
