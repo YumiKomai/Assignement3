@@ -2,6 +2,7 @@
 title: "Assignment3"
 output: pdf_document
 bibliography: bibliography.bib
+author: Bomi and Andoh
 ---
 
 ```{r setup, include=FALSE}
