@@ -2,7 +2,7 @@
 title: "Assignment3"
 output: pdf_document
 bibliography: bibliography.bib
-author: Kim Bomi and Takuma Andoh
+author: Bomi Kim and Takuma Andoh
 ---
 
 ```{r setup, include=FALSE}
@@ -155,7 +155,7 @@ plot(jikan,Earnings$mean)
 Then, We plotted the GINI coeficient of South Africa.
 
 ```{r}
-qplot(gini$year,gini$SI.POV.GINI)
+plot(gini$year,gini$SI.POV.GINI)
 ```
 
 ## Brief Description
