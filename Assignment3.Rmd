@@ -70,18 +70,16 @@ The data we want to have is the mean of earnings among races and gender in 2003,
 Firstly, we make TimeVector and IndivisualVector to labeling the data.
 
 ```{r}
-TimeVector <- c("2003","2012")
-IndivisualVector <- c("White","Asian/Indian","Coloured","BlackAfrican","Male","Female")
+TimeVector <- c(2003,2012) #numerical vector
+IndivisualVector <- c("White","Asian/Indian","Coloured","BlackAfrican","Male","Female") #character vector
 ```
 
-Then, we make DataVector for each year.
+Then, we try to convert character vector to numerical vector.
 
 ```{r}
 
-unique(as.numeric(unlist(strsplit(gsub( unlist(RaceEarningsTable$X5[3])), ""))))
+gsub('.*-([0-9]+).*','\\1',GenderEarningsTable$X5[3])
 
-data2003 <- c(as.numeric(RaceEarningsTable$X5[3]),as.numeric(RaceEarningsTable$X5[4]),as.numeric(RaceEarningsTable$X5[5]),as.numeric(RaceEarningsTable$X5[6]),as.numeric(GenderEarningsTable$X5[3]),as.numeric(GenderEarningsTable$X5[4]))
-data2003
 ```
 
 ```{r}
