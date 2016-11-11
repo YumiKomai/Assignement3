@@ -16,10 +16,10 @@ library(stringr)
 ```
 
 ## Research Quetion
-Twenty Years since the end of Apartheid: Did the collapse of Apartheid play a significant role in reducing racial and social inequality in South Africa? Is post-apartheid South Africa better off or worse off than during the apartheid era?
+Twenty years since the end of Apartheid: Did the collapse of Apartheid play a significant role in reducing racial and social inequality in South Africa? Is post-apartheid South Africa better off or worse off than during the apartheid era?
 
 ## Definition of Racial and social inequality
-Before answer the research question, we need to clarify what the racial and social inequality actually is. In this article, we defined it as a deferences among races in terms of unemployment rate, education disparity, and income distribution. The reason why we defined it by these three index is that in capitalism sociaty, income level is the most fundamental index, which estimates the quality of life of an indivisual. In adittion, we try to identify the driver of inequality of income level by investigate possible factors such as unemployment rate and education level.
+Before conducting the data analysis to find the answer for our research question, we begin by clarifying the definitions for racial and social inequality. While social ineuqality broadly refers to the existence of unequal opportunities for different social status/positions within a society, racial inequality can be seen as one of dimentions of social inequality. It thus indicates the discrimination based on race in access to socioeconomic opportunities or services. In our research study, we will specifically look into racial discrimination in terms of employment, education, and income levels. Becasue these three indicators within the capitalism society can be seen as fundamental yet significant estimators for the quality of human well-being, we decided to include them. In addition, we will try to identify drivers of unequal income distribution by controlling possible factors and variables such as unemployment rate and education level.
 
 ## Literature review
 Before starting investigation, we need to look around previous researches which has been writen by various ambitious researchers.
