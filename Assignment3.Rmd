@@ -152,6 +152,11 @@ qplot(gini$year,gini$SI.POV.GINI)
 
 ## Briefly discribing
 
+As shown in the first graph, we cannot say that the inequality is decreased. This results contradicts to our hyposition.
+
+In the second graph, we can see that the GINI index is slightly increased during 2008~2011. This means that the oveall inequality has been increased during this period.
+
+We need further data between 1990~2016 to reject our hypothesis. Because we need both data before and after the fall of Apartheid.
 
 
 # References
