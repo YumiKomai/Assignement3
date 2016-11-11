@@ -114,6 +114,18 @@ for(i in 3:6){
 }
 Earnings2003
 Earnings2012
+preEarnings <- data.frame(IndivisualVector,Earnings2003, Earnings2012)
+preEarnings
+```
+
+The preEarnings is messy data.
+
+So we are going to transform it into tidy data.
+
+```{r}
+library(tidyr)
+Earnings <- gather(preEarnings, time, mean, Earnings2003:Earnings2012)
+Earnings
 ```
 
 We suceeded to make the numerical vector showing the earnings among races and genders.
