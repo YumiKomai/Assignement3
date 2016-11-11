@@ -1,0 +1,470 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{unicode=true,
+            pdftitle={Assignment3},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Assignment3}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{}
+  \preauthor{}\postauthor{}
+  \date{}
+  \predate{}\postdate{}
+
+
+
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\begin{document}
+\maketitle
+
+\subsection{Research Question}\label{research-question}
+
+Twenty years since the end of Apartheid: Did the collapse of Apartheid
+play a significant role in reducing racial and social inequality in
+South Africa? Is post-apartheid South Africa better off or worse off
+than during the apartheid era?
+
+\subsection{Definition of Racial and social
+inequality}\label{definition-of-racial-and-social-inequality}
+
+Before conducting the data analysis to find the answer for our research
+question, we begin by clarifying the definitions for racial and social
+inequality. While social inequality broadly refers to the existence of
+unequal opportunities for different social status/positions within a
+society, racial inequality can be seen as one of dimensions of social
+inequality. It thus indicates the discrimination based on race in access
+to socioeconomic opportunities or services. In our research study, we
+will specifically look into racial discrimination in terms of
+employment, education, and income levels. Because these three indicators
+within the capitalism society can be seen as fundamental yet significant
+estimators for the quality of human well-being, we decided to include
+them. In addition, we will try to identify drivers of unequal income
+distribution by controlling possible factors and variables such as
+unemployment rate and education level.
+
+\subsection{Literature review}\label{literature-review}
+
+In order for us to bring out more in-depth analysis, we undertook
+background researches by examining the past studies written by various
+researchers. First of all, according to Leibbrandt,(see Leibbrandt
+(n.d.)), Since the fall of Apartheid(1993\textasciitilde{}2008), overall
+(include all races) income inequality has increased and it was mainly
+caused by huge inequality within black African community in
+South-Africa. We chose this article as the first reference since it has
+been cited the most for the South-African Inequality Study. Second
+research literature is ``One Kind of Freedom: Poverty Dynamics in
+Post-Apartheid South Africa,'' which explores whether the legacy of
+apartheid in terms of inequality and human insecurity has been
+superseded by looking at the dynamics of post-apartheid income
+distribution based on the data from national household surveys. ``Income
+and Non-income Inequality in Post-Apartheid South Africa: What are the
+Drivers and Possible Policy Interventions?'' identifies the drivers of
+the reproduction of inequality in post-apartheid South Africa and argues
+that there had a continuous increase in inequality, strongly indicating
+that South African is now the one of the most consistently unequal
+economy in the world. Fourth background research literature is ``Poverty
+and Well-being in Post-Apartheid South Africa: An Overview of Data,
+Outcomes and Policy.'' While this study provides an overview of poverty
+and well-being of South African during the first decade of
+post-apartheid, it argues that the first ten years after the end of
+Apartheid has rather displayed increase in income inequality and
+unemployment rates. ``Crime and local inequality in South Africa''
+examines the effects of local inequality and violent crime in South
+Africa in the post-apartheid era and claims that racial heterogeneity is
+highly correlated with all types of crime. Lastly, ``Poverty and
+Inequality Dynamics in South Africa: Post-apartheid Developments in the
+Light of the Long-Run Legacy'' makes a claim that the bottom half of the
+income distribution and poverty has been dominated by these black South
+Africans.
+
+\subsection{Data Gathering}\label{data-gathering}
+
+Closely having studied the past researches, we found that most of
+researchers made opposite conclusions to ours in regard to the effects
+of post-apartheid on the qualiaty of life in South Africa. We therefore
+want to test our hypothesis based on the following data analysis and
+compare with the past studies.
+
+We found the data of monthly earnings among races and gender. We tried
+to scraping the data from the website.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{URL <-}\StringTok{ 'http://businesstech.co.za/news/wealth/131524/this-is-the-average-salary-in-south-africa-by-race-and-industry/'}
+
+\NormalTok{RaceEarningsTable <-}\StringTok{ }\NormalTok{URL %>%}\StringTok{ }\KeywordTok{read_html}\NormalTok{() %>%}
+\StringTok{                    }\KeywordTok{html_nodes}\NormalTok{(}\StringTok{'#container > div.content_holder > div.content > div.post_single > div.post_content > div:nth-child(11) > table'}\NormalTok{) %>%}
+\StringTok{                    }\KeywordTok{html_table}\NormalTok{() %>%}\StringTok{ }
+\StringTok{                    }\NormalTok{as.data.frame}
+\NormalTok{RaceEarningsTable}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              X1     X2     X3       X4     X5     X6       X7
+## 1               Median Median   Median   Mean   Mean     Mean
+## 2          Race   2003   2012 Increase   2003   2012 Increase
+## 3         White 14 468 16 581      15% 11 249 11 991       7%
+## 4  Asian/Indian  7 825 11 701      50%  5 264  8 993      60%
+## 5      Coloured  4 241  7 058      66%  2 437  3 897      60%
+## 6 Black African  4 059  5 445      34%  2 437  2 998      23%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{URL <-}\StringTok{ 'http://businesstech.co.za/news/wealth/131524/this-is-the-average-salary-in-south-africa-by-race-and-industry/'}
+
+\NormalTok{GenderEarningsTable <-}\StringTok{ }\NormalTok{URL %>%}\StringTok{ }\KeywordTok{read_html}\NormalTok{() %>%}
+\StringTok{                    }\KeywordTok{html_nodes}\NormalTok{(}\StringTok{'#container > div.content_holder > div.content > div.post_single > div.post_content > div:nth-child(13) > table'}\NormalTok{) %>%}
+\StringTok{                    }\KeywordTok{html_table}\NormalTok{() %>%}\StringTok{ }
+\StringTok{                    }\NormalTok{as.data.frame}
+\NormalTok{GenderEarningsTable}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       X1     X2     X3       X4    X5    X6       X7
+## 1        Median Median   Median  Mean  Mean     Mean
+## 2   Race   2003   2012 Increase  2003  2012 Increase
+## 3   Male  5 963  8 299      39% 3 375 4 317      28%
+## 4 Female  4 849  6 399      32% 2 435 3 118      28%
+\end{verbatim}
+
+\subsection{Data Cleaning and Merging}\label{data-cleaning-and-merging}
+
+In this section, we will try to clean the data so that they can be
+statistical analysed.
+
+Firstly, we use command ``summary'' to investigate the structure (class
+of variables, number of vectors) of data frames we got in the previous
+section.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(RaceEarningsTable)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       X1                 X2                 X3           
+##  Length:6           Length:6           Length:6          
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##       X4                 X5                 X6           
+##  Length:6           Length:6           Length:6          
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##       X7           
+##  Length:6          
+##  Class :character  
+##  Mode  :character
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(GenderEarningsTable)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       X1                 X2                 X3           
+##  Length:4           Length:4           Length:4          
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##       X4                 X5                 X6           
+##  Length:4           Length:4           Length:4          
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##       X7           
+##  Length:4          
+##  Class :character  
+##  Mode  :character
+\end{verbatim}
+
+As shown, every variables has a class of ``characters'' even though it
+represents numerical data.
+
+The data we want to have is the mean of earnings among races and gender
+in 2003, 2012.
+
+Firstly, we make TimeVector and IndivisualVector to labeling the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TimeVector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2003}\NormalTok{,}\DecValTok{2012}\NormalTok{) }\CommentTok{#numerical vector}
+\NormalTok{IndivisualVector <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{,}\StringTok{"White"}\NormalTok{,}\StringTok{"Asian/Indian"}\NormalTok{,}\StringTok{"Coloured"}\NormalTok{,}\StringTok{"BlackAfrican"}\NormalTok{) }\CommentTok{#character vector}
+\end{Highlighting}
+\end{Shaded}
+
+Then, we try to convert character vector to numerical vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{male2003 <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{"([0-9]+).*$"}\NormalTok{, }\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{1"}\NormalTok{, }\KeywordTok{str_replace_all}\NormalTok{(GenderEarningsTable$X5[}\DecValTok{3}\NormalTok{], }\KeywordTok{fixed}\NormalTok{(}\StringTok{" "}\NormalTok{), }\StringTok{""}\NormalTok{)))}
+\KeywordTok{is.numeric}\NormalTok{(male2003)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{male2003}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3375
+\end{verbatim}
+
+As I shown above, the character variable successfully converted to
+numerical variable. Then, we make function which conduct this sequence.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Converter <-}\StringTok{ }\NormalTok{function(x)\{}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{"([0-9]+).*$"}\NormalTok{, }\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{1"}\NormalTok{, }\KeywordTok{str_replace_all}\NormalTok{(x, }\KeywordTok{fixed}\NormalTok{(}\StringTok{" "}\NormalTok{), }\StringTok{""}\NormalTok{)))}
+\KeywordTok{return}\NormalTok{(y)}
+\NormalTok{\}}
+\NormalTok{test <-}\StringTok{ }\KeywordTok{Converter}\NormalTok{(}\DataTypeTok{x =} \NormalTok{GenderEarningsTable$X5[}\DecValTok{3}\NormalTok{])}
+\KeywordTok{is.numeric}\NormalTok{(test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3375
+\end{verbatim}
+
+Then, we can apply this function to all data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#definition of vector}
+\NormalTok{Earnings2003 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{Earnings2012 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+
+\CommentTok{#GenderEarnings}
+\NormalTok{for(i in }\DecValTok{3}\NormalTok{:}\DecValTok{4}\NormalTok{)\{}
+  \NormalTok{Earnings2003[i}\DecValTok{-2}\NormalTok{] =}\StringTok{ }\KeywordTok{Converter}\NormalTok{(}\DataTypeTok{x =} \NormalTok{GenderEarningsTable$X5[i])}
+  \NormalTok{Earnings2012[i}\DecValTok{-2}\NormalTok{] =}\StringTok{ }\KeywordTok{Converter}\NormalTok{(}\DataTypeTok{x =} \NormalTok{GenderEarningsTable$X6[i])}
+\NormalTok{\}}
+\CommentTok{#RaceEarnings}
+\NormalTok{for(i in }\DecValTok{3}\NormalTok{:}\DecValTok{6}\NormalTok{)\{}
+  \NormalTok{Earnings2003[i] =}\StringTok{ }\KeywordTok{Converter}\NormalTok{(}\DataTypeTok{x =} \NormalTok{RaceEarningsTable$X5[i])}
+  \NormalTok{Earnings2012[i] =}\StringTok{ }\KeywordTok{Converter}\NormalTok{(}\DataTypeTok{x =} \NormalTok{RaceEarningsTable$X6[i])}
+\NormalTok{\}}
+\NormalTok{Earnings2003}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  3375  2435 11249  5264  2437  2437
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Earnings2012}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  4317  3118 11991  8993  3897  2998
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{preEarnings <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(IndivisualVector,Earnings2003, Earnings2012)}
+\NormalTok{preEarnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   IndivisualVector Earnings2003 Earnings2012
+## 1             Male         3375         4317
+## 2           Female         2435         3118
+## 3            White        11249        11991
+## 4     Asian/Indian         5264         8993
+## 5         Coloured         2437         3897
+## 6     BlackAfrican         2437         2998
+\end{verbatim}
+
+The preEarnings is messy data.
+
+So we are going to transform it into tidy data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'tidyr' was built under R version 3.3.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Earnings <-}\StringTok{ }\KeywordTok{gather}\NormalTok{(preEarnings, time, mean, Earnings2003:Earnings2012)}
+\NormalTok{Earnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    IndivisualVector         time  mean
+## 1              Male Earnings2003  3375
+## 2            Female Earnings2003  2435
+## 3             White Earnings2003 11249
+## 4      Asian/Indian Earnings2003  5264
+## 5          Coloured Earnings2003  2437
+## 6      BlackAfrican Earnings2003  2437
+## 7              Male Earnings2012  4317
+## 8            Female Earnings2012  3118
+## 9             White Earnings2012 11991
+## 10     Asian/Indian Earnings2012  8993
+## 11         Coloured Earnings2012  3897
+## 12     BlackAfrican Earnings2012  2998
+\end{verbatim}
+
+We suceeded to make the numerical vector showing the earnings among
+races and genders.
+
+\subsection{Conduct basic descriptive
+statistics}\label{conduct-basic-descriptive-statistics}
+
+The data we gathered in previous section partialy statisticaly analysed
+(mean and median are already calcurated). In this section, we try to
+figure out the trend of inequality graphycally by using descriptive
+statistics.
+
+\subsection{Briefly discribing}\label{briefly-discribing}
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\hypertarget{ref-Leibbrandt}{}
+Leibbrandt, et al., \textless{}!--// //--\textgreater{} M. n.d. ``Trends
+in South African Income Distribution and Poverty Since the Fall of
+Apartheid.'' OECD Publishing.
+doi:\href{https://doi.org/http://dx.doi.org/10.1787/5kmms0t7p1ms-en}{http://dx.doi.org/10.1787/5kmms0t7p1ms-en}.
+
+\end{document}
