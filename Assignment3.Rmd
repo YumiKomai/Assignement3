@@ -12,6 +12,7 @@ library(bibtex)
 library(rvest)
 library(dplyr)
 library(xml2)
+library(stringr)
 ```
 
 ## Research Quetion
@@ -71,47 +72,55 @@ Firstly, we make TimeVector and IndivisualVector to labeling the data.
 
 ```{r}
 TimeVector <- c(2003,2012) #numerical vector
-IndivisualVector <- c("White","Asian/Indian","Coloured","BlackAfrican","Male","Female") #character vector
+IndivisualVector <- c("Male","Female","White","Asian/Indian","Coloured","BlackAfrican") #character vector
 ```
 
 Then, we try to convert character vector to numerical vector.
 
 ```{r}
-
-gsub('.*-([0-9]+).*','\\1',GenderEarningsTable$X5[3])
-
+male2003 <- as.numeric(gsub("([0-9]+).*$", "\\1", str_replace_all(GenderEarningsTable$X5[3], fixed(" "), "")))
+is.numeric(male2003)
+male2003
 ```
+As I shown above, the character variable successfully converted to numerical variable.
+Then, we make function which conduct this sequence.
 
 ```{r}
-#2003
-GenderEarningsTable$X5[3] #2003male
-GenderEarningsTable$X5[4] #2003female
-
-#2012
-GenderEarningsTable$X6[3] #2012male
-GenderEarningsTable$X6[4] #2012female
-
-#2003
-RaceEarningsTable$X5[3]
-RaceEarningsTable$X5[4]
-RaceEarningsTable$X5[5]
-RaceEarningsTable$X5[6]
-
-#2012
-RaceEarningsTable$X6[3]
-RaceEarningsTable$X6[4]
-RaceEarningsTable$X6[5]
-RaceEarningsTable$X6[6]
-
+Converter <- function(x){
+y <- as.numeric(gsub("([0-9]+).*$", "\\1", str_replace_all(x, fixed(" "), "")))
+return(y)
+}
+test <- Converter(x = GenderEarningsTable$X5[3])
+is.numeric(test)
+test
 ```
 
+Then, we can apply this function to all data.
 
+```{r}
+#definition of vector
+Earnings2003 <- c(0,0,0,0,0,0)
+Earnings2012 <- c(0,0,0,0,0,0)
 
+#GenderEarnings
+for(i in 3:4){
+  Earnings2003[i-2] = Converter(x = GenderEarningsTable$X5[i])
+  Earnings2012[i-2] = Converter(x = GenderEarningsTable$X6[i])
+}
+#RaceEarnings
+for(i in 3:6){
+  Earnings2003[i] = Converter(x = RaceEarningsTable$X5[i])
+  Earnings2012[i] = Converter(x = RaceEarningsTable$X6[i])
+}
+Earnings2003
+Earnings2012
+```
 
-
+We suceeded to make the numerical vector showing the earnings among races and genders.
 
 ## Conduct basic descriptive statistics
 The data we gathered in previous section partialy statisticaly analysed (mean and median are already calcurated). In this section, we try to figure out the trend of inequality graphycally by using descriptive statistics.
+
 
 
 
